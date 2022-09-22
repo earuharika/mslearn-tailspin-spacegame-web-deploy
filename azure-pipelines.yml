@@ -1,5 +1,6 @@
 trigger:
-- '*'
+- 'main'
+
 
 variables:
   buildConfiguration: 'Release'
@@ -12,7 +13,7 @@ stages:
   - job: 'Build'
     displayName: 'Build job'
     pool:
-      name: 'MyAgentPool'
+      vmImage: 'MyAgentPool'
       demands:
       - npm
 
@@ -78,7 +79,7 @@ stages:
   jobs:
   - deployment: Deploy
     pool:
-      name: 'MyAgentPool'
+      vmImage: 'MyAgentPool'
     environment: dev
     variables:
     - group: Release
